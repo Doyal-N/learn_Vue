@@ -9,6 +9,9 @@
 
 <div id="block">
   <h1>{{ title }}</h1>
+  <h2>{{ num + 3 }}</h2>
+  <h2>{{ say(2) }}</h2>
+  <h3>{{ str.toUpperCase() }}</h3>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> 
@@ -17,7 +20,14 @@
   new Vue({
     el: '#block',
     data: {
-      title: 'Hello, funny world!'
+      title: 'Hello, funny world!',
+      num: 34,
+      str: 'colony'
+    },
+    methods: {
+      say: function(a) {
+        return 23 + a
+      }
     }
   })
 
