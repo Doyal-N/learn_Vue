@@ -11,7 +11,8 @@
   <h1>{{ title }}</h1>
   <h2>{{ num + 3 }}</h2>
   <h2>{{ say(2) }}</h2>
-  <h3>{{ str.toUpperCase() }}</h3>
+  <h3>{{ str.length }}</h3>
+  <h2><a v-bind:href="url">Link</a></h2>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> 
@@ -22,7 +23,8 @@
     data: {
       title: 'Hello, funny world!',
       num: 34,
-      str: 'colony'
+      str: 'colony',
+      url: 'https://lazyduralex.ru'
     },
     methods: {
       say: function(a) {
