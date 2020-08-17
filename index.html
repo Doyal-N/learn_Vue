@@ -13,7 +13,11 @@
   <h2>{{ say(2) }}</h2>
   <h3>{{ str.length }}</h3>
   <h2><a v-bind:href="url">Link</a></h2>
-</div>
+  <h2 v-html="link"></h2>
+  <h2>Counter: {{ counter }}</h2>
+  <button v-on:click="riseCounter">ADD</button>
+   
+  </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> 
 <script>
@@ -24,11 +28,16 @@
       title: 'Hello, funny world!',
       num: 34,
       str: 'colony',
-      url: 'https://lazyduralex.ru'
+      url: 'https://lazyduralex.ru',
+      link: '<a href="https://lazyduralex.ru">Tag</a>',
+      counter: 0
     },
     methods: {
       say: function(a) {
         return 23 + a
+      },
+      riseCounter: function() {
+        this.counter++;
       }
     }
   })
