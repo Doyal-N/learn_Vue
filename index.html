@@ -14,8 +14,11 @@
   <h3>{{ str.length }}</h3>
   <h2><a v-bind:href="url">Link</a></h2>
   <h2 v-html="link"></h2>
-  <h2>Counter: {{ counter }}</h2>
-  <button v-on:click="riseCounter">ADD</button>
+  <h2>{{ title }}: {{ counter }}</h2>
+  <button v-on:click="riseCounter(100, 'Bye', $event)">ADD</button>
+
+  <h2 v-on:mouseover="onColor">Counter: {{ counter2 }}</h2>
+  <button v-on:click="counter2--">ADD</button>
    
   </div>
 
@@ -30,14 +33,21 @@
       str: 'colony',
       url: 'https://lazyduralex.ru',
       link: '<a href="https://lazyduralex.ru">Tag</a>',
-      counter: 0
+      counter: 0,
+      counter2: 100
     },
     methods: {
       say: function(a) {
         return 23 + a
       },
-      riseCounter: function() {
-        this.counter++;
+      riseCounter: function(int, str, event) {
+        this.counter += int;
+        this.title = str;
+        event.target.style.width = '100px'
+        
+      },
+      onColor: function(event) {
+        event.target.style.color = 'green'
       }
     }
   })
