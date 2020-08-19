@@ -12,14 +12,25 @@
   <h2>{{ num + 3 }}</h2>
   <h2>{{ say(2) }}</h2>
   <h3>{{ str.length }}</h3>
-  <h2><a v-bind:href="url">Link</a></h2>
+  <h2><a :href="url">Link</a></h2>
   <h2 v-html="link"></h2>
   <h2>{{ title }}: {{ counter }}</h2>
-  <button v-on:click="riseCounter(100, 'Bye', $event)">ADD</button>
+  <button @click="riseCounter(100, 'Bye', $event)">ADD</button>
 
-  <h2 v-on:mouseover="onColor">Counter: {{ counter2 }}</h2>
-  <button v-on:click="counter2--">ADD</button>
-   
+  <h2 @mouseover="onColor">Counter: {{ counter2 }}</h2>
+  <button @click="counter2--">ADD</button>
+
+  <h2><a @click.prevent href="https://lazyduralex.ru">Click</a></h2>
+   <hr>
+   <input @keyup.enter="alertVal" type="text">
+
+   <hr>
+   <input type="text" @input="inputVal = $event.target.value" :value="inputVal">
+   <h2>{{ inputVal }}</h2>
+
+   <hr>
+   <input type="text" v-model.lazy="inputValue">
+   <h2>{{ inputValue }}</h2>
   </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> 
@@ -34,7 +45,9 @@
       url: 'https://lazyduralex.ru',
       link: '<a href="https://lazyduralex.ru">Tag</a>',
       counter: 0,
-      counter2: 100
+      counter2: 100,
+      inputVal: 'Rew',
+      inputValue: 'Godot'
     },
     methods: {
       say: function(a) {
@@ -48,6 +61,9 @@
       },
       onColor: function(event) {
         event.target.style.color = 'green'
+      },
+      alertVal: function(event) {
+       alert(event.target.value)
       }
     }
   })
