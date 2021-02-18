@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/vue"></script>
+  <title>Vue JS</title>
+</head>
+
+<body>
+  <div id="note">
+    <h1>{{ title }}</h1>
+
+    <!-- new note  -->
+    <div class="new-note">
+      <input v-model="note.title" type="text">
+      <textarea v-model="note.description" ></textarea>
+      <button @click="addNote">New note</button>
+    </div>
+
+    <!-- notes list -->
+    <div class="notes">
+      <div class="note" v-for="(note, index) in notes" :key="index">
+        <div class="note-header">
+          <p>{{ note.title }}</p>
+        </div>
+        <div class="note-body">
+          <p>{{ note.description }}</p>
+          <span>{{ note.date }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var note = new Vue({
+      el: '#note',
+      data: {
+        title: 'Notes',
+        note: {
+          title: '',
+          description: ''
+        },
+        notes: [{
+            title: 'First note',
+            description: 'Some text',
+            date: new Date(Date.now()).toLocaleString()
+          },
+          {
+            title: 'Second note',
+            description: 'Some text',
+            date: new Date(Date.now()).toLocaleString()
+          },
+          {
+            title: 'Third note',
+            description: 'Some text',
+            date: new Date(Date.now()).toLocaleString()
+          }
+        ]
+      },
+      methods:{
+        addNote() {
+          let { title, description } = this.note
+          this.notes.push({
+            title,
+            description,
+            date: new Date(Date.now()).toLocaleString()
+          })
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
